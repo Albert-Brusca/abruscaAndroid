@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     internal var appStarted = false
     internal lateinit var countDownTimer : CountDownTimer
-    internal val initialCountDownTimer : Long = 10000
+    internal val initialCountDownTimer : Long = 60000
     internal val intervalCountDownTimer : Long = 1000
 
 
@@ -75,5 +75,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun endGame() {
         Toast.makeText(this, getString(R.string.endGame), Toast.LENGTH_LONG).show()
+        val alerta = AlertDialog.Builder(this)
+        with(alerta){
+            this.setTitle("Clicks realitzats:")
+            this.setMessage(""+contador + " clicks");
+            this.setPositiveButton("Continuar",null)
+            this.show()
+        }
+        resetGame()
+    }
+
+    private fun resetGame() {
+        contador = 0;
+        appStarted=false
+
     }
 }
