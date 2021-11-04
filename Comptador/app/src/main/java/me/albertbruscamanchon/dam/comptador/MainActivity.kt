@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -39,7 +42,10 @@ class MainActivity : AppCompatActivity() {
         time = findViewById(R.id.time)
         counter = findViewById(R.id.counter)
 
-        tapMeButton.setOnClickListener{
+        tapMeButton.setOnClickListener{ view ->
+            val bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce)
+            view.startAnimation(bounceAnimation)
+
             if (!appStarted) {
                 startGame()
             }
@@ -71,8 +77,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun incrementCounter() {
+
+        val blinkAnimation = AnimationUtils.loadAnimation(this, R.anim.blink)
+
         contador += 1
         counter.text = contador.toString()
+        counter.startAnimation(blinkAnimation)
 
     }
 
