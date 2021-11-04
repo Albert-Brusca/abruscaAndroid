@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private val INITIAL_TIME = 20
 
-    private val TAG = MainActivity::class.java.simpleName
-
     internal lateinit var tapMeButton : Button
     internal lateinit var time : TextView
     internal lateinit var counter : TextView
@@ -32,8 +30,6 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(TAG, "Hola món! onCreate")
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -85,7 +81,8 @@ class MainActivity : AppCompatActivity() {
         val alerta = AlertDialog.Builder(this)
         with(alerta){
             this.setTitle("Clicks realitzats:")
-            this.setMessage(""+contador + " clicks");
+            if (contador <= 1) this.setMessage(""+contador + " click");
+            else this.setMessage(""+contador + " clicks");
             this.setPositiveButton("Continuar",null)
             this.show()
         }
