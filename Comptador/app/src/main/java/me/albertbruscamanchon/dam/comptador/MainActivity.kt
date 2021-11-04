@@ -4,6 +4,7 @@ import android.content.IntentSender
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -14,19 +15,25 @@ import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
 
+    private val INITIAL_TIME = 20
+
+    private val TAG = MainActivity::class.java.simpleName
+
     internal lateinit var tapMeButton : Button
     internal lateinit var time : TextView
     internal lateinit var counter : TextView
     internal var contador = 0
-    internal var temps = 60
+    internal var temps = INITIAL_TIME
 
     internal var appStarted = false
     internal lateinit var countDownTimer : CountDownTimer
-    internal val initialCountDownTimer : Long = 60000
+    internal val initialCountDownTimer : Long = 20000
     internal val intervalCountDownTimer : Long = 1000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "Hola món! onCreate")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
